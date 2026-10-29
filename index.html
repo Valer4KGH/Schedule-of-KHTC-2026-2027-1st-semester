@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Расписание занятий — ХТК</title>
+<meta name="description" content="Расписание занятий КГБ ПОУ ХТК на 1 семестр 2026/2027 учебного года">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="fx.css">
+<link rel="stylesheet" href="fx2.css">
+</head>
+<body>
+<canvas id="rain" aria-hidden="true"></canvas>
+<div class="scan" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="brand">
+    <span class="logo">&gt;_</span>
+    <div>
+      <h1>Расписание занятий</h1>
+      <p id="subtitle">КГБ ПОУ ХТК</p>
+    </div>
+  </div>
+  <div class="clock"><div id="clockTime">--:--</div><div id="clockDate">—</div></div>
+</header>
+
+<main class="wrap">
+
+  <section class="panel controls">
+    <div class="row">
+      <label class="lbl" for="groupInput">Группа</label>
+      <div class="combo">
+        <input id="groupInput" list="groupList" placeholder="Начните вводить, например ИСП-Д52" autocomplete="off" spellcheck="false">
+        <datalist id="groupList"></datalist>
+      </div>
+    </div>
+    <div class="row">
+      <span class="lbl">Курс</span>
+      <div class="chips" id="courseChips"></div>
+    </div>
+    <div class="row">
+      <span class="lbl">Группы</span>
+      <div class="chips groups" id="groupChips"></div>
+    </div>
+  </section>
+
+  <section id="view" class="hidden">
+    <div class="bar">
+      <div class="who"><span class="tag">ГРУППА</span> <b id="gName">—</b></div>
+      <div class="bar-right">
+        <div class="seg" id="weekSeg" role="group" aria-label="Неделя">
+          <button data-w="n">Числитель</button>
+          <button data-w="d">Знаменатель</button>
+        </div>
+        <div class="seg" id="modeSeg" role="group" aria-label="Режим">
+          <button data-m="day">День</button>
+          <button data-m="week">Неделя</button>
+        </div>
+      </div>
+    </div>
+    <p class="hint" id="weekHint"></p>
+
+    <div class="tabs" id="dayTabs"></div>
+    <div id="dayView" class="lessons"></div>
+    <div id="weekView" class="weekgrid hidden"></div>
+  </section>
+
+  <section id="empty" class="panel empty">
+    <div class="empty-ico">▌</div>
+    <p>Выберите группу выше — и расписание появится здесь.</p>
+  </section>
+
+  <section class="panel search">
+    <h2>Поиск по расписанию</h2>
+    <p class="muted">Преподаватель, предмет или аудитория — по всем группам.</p>
+    <input id="q" type="search" placeholder="Например: Шевчук, Математика, УЛК2 ауд.311" autocomplete="off">
+    <div id="results" class="results"></div>
+  </section>
+</main>
+
+<footer>
+  <p><span id="foot1">КГБ ПОУ ХТК</span> · данные из файла расписания</p>
+  <p class="muted">Неделя числитель/знаменатель определяется автоматически — при ошибке переключите вручную.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+<script src="fx.js"></script>
+<script src="fx2.js"></script>
+</body>
+</html>

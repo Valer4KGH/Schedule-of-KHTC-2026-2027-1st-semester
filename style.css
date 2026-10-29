@@ -1,0 +1,117 @@
+:root{
+  --bg:#030705; --panel:rgba(8,20,13,.82); --line:rgba(0,255,102,.22);
+  --g:#00ff66; --g2:#14d65c; --g3:#0a7a3a; --txt:#d9f7e4; --mut:#6fae88; --warn:#ffd24a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden;
+  background-image:radial-gradient(circle at 15% 0%,rgba(0,255,102,.10),transparent 45%),radial-gradient(circle at 90% 100%,rgba(0,255,102,.07),transparent 45%);background-attachment:fixed}
+#rain{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.16;pointer-events:none}
+.scan{position:fixed;inset:0;z-index:50;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);mix-blend-mode:multiply}
+.hidden{display:none!important}
+.muted{color:var(--mut)}
+
+.top,.wrap,footer{position:relative;z-index:2}
+.top{max-width:1100px;margin:0 auto;padding:30px 20px 10px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{display:flex;gap:16px;align-items:center}
+.logo{font-family:'Share Tech Mono',monospace;font-size:1.7rem;color:var(--bg);background:var(--g);padding:8px 12px;border-radius:8px;box-shadow:0 0 22px rgba(0,255,102,.55)}
+h1{font-family:'Rajdhani',sans-serif;font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:2px;text-transform:uppercase;color:#fff;text-shadow:0 0 14px rgba(0,255,102,.55);line-height:1}
+.brand p{font-family:'Share Tech Mono',monospace;color:var(--g2);font-size:.85rem;margin-top:6px}
+.clock{text-align:right;font-family:'Share Tech Mono',monospace}
+#clockTime{font-size:2rem;color:var(--g);text-shadow:0 0 12px rgba(0,255,102,.6);line-height:1}
+#clockDate{font-size:.8rem;color:var(--mut);margin-top:4px;text-transform:capitalize}
+
+.wrap{max-width:1100px;margin:0 auto;padding:10px 20px 40px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:18px;backdrop-filter:blur(6px);box-shadow:0 0 30px rgba(0,0,0,.5),inset 0 0 24px rgba(0,255,102,.04)}
+.controls .row{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}
+.controls .row:last-child{margin-bottom:0}
+.lbl{flex:0 0 70px;padding-top:10px;font-family:'Share Tech Mono',monospace;font-size:.78rem;color:var(--g2);text-transform:uppercase;letter-spacing:1px}
+.combo{flex:1}
+input{width:100%;background:#020503;color:var(--g);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font:inherit;font-family:'Share Tech Mono',monospace;font-size:1rem;outline:none;transition:.2s}
+input::placeholder{color:#3d7a55}
+input:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(0,255,102,.15),0 0 18px rgba(0,255,102,.25)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;flex:1}
+.chip{font-family:'Share Tech Mono',monospace;font-size:.85rem;color:var(--txt);background:rgba(0,255,102,.05);border:1px solid var(--line);border-radius:8px;padding:7px 12px;cursor:pointer;transition:.18s}
+.chip:hover{border-color:var(--g);color:var(--g);background:rgba(0,255,102,.1)}
+.chip.on{background:var(--g);color:#001a0a;border-color:var(--g);box-shadow:0 0 16px rgba(0,255,102,.5);font-weight:700}
+.groups .chip{padding:6px 10px;font-size:.8rem}
+
+.bar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px}
+.who{font-family:'Rajdhani',sans-serif;font-size:1.7rem;letter-spacing:1px}
+.who b{color:var(--g);text-shadow:0 0 12px rgba(0,255,102,.55)}
+.tag{font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--g2);border:1px solid var(--line);padding:3px 8px;border-radius:6px;vertical-align:middle;margin-right:6px}
+.bar-right{display:flex;gap:12px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{background:transparent;border:0;color:var(--mut);padding:9px 15px;font:600 .8rem 'Inter',sans-serif;letter-spacing:.5px;cursor:pointer;transition:.18s}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button:hover{color:var(--g)}
+.seg button.on{background:var(--g);color:#001a0a}
+.hint{font-size:.78rem;color:var(--mut);margin:10px 0 14px;font-family:'Share Tech Mono',monospace}
+.hint b{color:var(--g)}
+
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:14px}
+.tab{flex:1 0 auto;min-width:92px;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--txt);cursor:pointer;font:600 .85rem 'Inter',sans-serif;transition:.18s;position:relative}
+.tab small{display:block;font:.68rem 'Share Tech Mono',monospace;color:var(--mut);margin-top:2px}
+.tab:hover{border-color:var(--g)}
+.tab.on{background:var(--g);color:#001a0a;box-shadow:0 0 18px rgba(0,255,102,.5)}
+.tab.on small{color:#04431f}
+.tab.today::after{content:'';position:absolute;top:6px;right:7px;width:7px;height:7px;border-radius:50%;background:var(--g);box-shadow:0 0 8px var(--g);animation:pulse 1.4s infinite}
+.tab.on.today::after{background:#001a0a;box-shadow:none}
+@keyframes pulse{50%{opacity:.25}}
+
+.lessons{display:grid;gap:12px}
+.lesson{display:grid;grid-template-columns:70px 1fr;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:.2s;animation:in .4s both}
+.lesson:hover{border-color:var(--g);box-shadow:0 0 22px rgba(0,255,102,.2);transform:translateX(3px)}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+.num{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,255,102,.07);border-right:1px solid var(--line);font-family:'Share Tech Mono',monospace}
+.num b{font-size:2rem;color:var(--g);text-shadow:0 0 12px rgba(0,255,102,.6);line-height:1}
+.num span{font-size:.62rem;color:var(--mut);text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+.body{padding:15px 18px}
+.subj{font-weight:600;font-size:1.02rem;line-height:1.4;color:#fff}
+.meta{margin-top:5px;font-size:.88rem;color:var(--mut);line-height:1.5}
+.lesson.free .body{color:#3f7a58;font-family:'Share Tech Mono',monospace;font-size:.9rem}
+.lesson.free .num b{color:#2d6b47;text-shadow:none}
+.lesson.talk .num b{color:var(--warn);text-shadow:0 0 10px rgba(255,210,74,.5)}
+.badge{display:inline-block;font:.68rem 'Share Tech Mono',monospace;border:1px solid var(--warn);color:var(--warn);padding:2px 7px;border-radius:5px;margin-bottom:6px;margin-right:6px}
+.badge.g{border-color:var(--g);color:var(--g)}
+.alt{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:.85rem;color:var(--mut)}
+.alt b{color:var(--warn);font:.7rem 'Share Tech Mono',monospace;margin-right:6px}
+
+/* неделя */
+.weekgrid{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.weekgrid table{border-collapse:collapse;width:100%;min-width:920px}
+.weekgrid th,.weekgrid td{border:1px solid rgba(0,255,102,.12);padding:10px;vertical-align:top;font-size:.8rem;line-height:1.4;text-align:left}
+.weekgrid th{font-family:'Rajdhani',sans-serif;font-size:1rem;letter-spacing:1px;text-transform:uppercase;color:var(--g);background:rgba(0,255,102,.07);text-align:center}
+.weekgrid th.today{background:var(--g);color:#001a0a}
+.weekgrid td.pn{width:46px;text-align:center;font:1.1rem 'Share Tech Mono',monospace;color:var(--g)}
+.weekgrid td b{display:block;color:#fff;font-weight:600}
+.weekgrid td span{color:var(--mut)}
+.weekgrid td.free{color:#2f5f45;text-align:center}
+.weekgrid td.today{background:rgba(0,255,102,.05)}
+
+/* поиск */
+.search h2{font-family:'Rajdhani',sans-serif;font-size:1.5rem;letter-spacing:1.5px;text-transform:uppercase;color:#fff}
+.search p{margin:4px 0 14px;font-size:.88rem}
+.results{margin-top:16px;display:grid;gap:8px}
+.res{display:grid;grid-template-columns:130px 1fr;gap:12px;padding:11px 14px;background:rgba(0,255,102,.04);border:1px solid var(--line);border-radius:10px;font-size:.88rem;cursor:pointer;transition:.18s}
+.res:hover{border-color:var(--g);background:rgba(0,255,102,.09)}
+.res .w{font:.78rem 'Share Tech Mono',monospace;color:var(--g)}
+.res .w small{display:block;color:var(--mut);margin-top:2px}
+.res mark{background:rgba(0,255,102,.3);color:#fff;border-radius:3px;padding:0 2px}
+.more{text-align:center;font:.8rem 'Share Tech Mono',monospace;color:var(--mut);padding:8px}
+
+.empty{text-align:center;padding:50px 20px;color:var(--mut)}
+.empty-ico{font-family:'Share Tech Mono',monospace;font-size:2.5rem;color:var(--g);animation:pulse 1s steps(1) infinite}
+
+footer{max-width:1100px;margin:0 auto;padding:10px 20px 50px;text-align:center;font:.78rem 'Share Tech Mono',monospace;color:#4f8a68;line-height:1.9}
+
+@media(max-width:700px){
+  .controls .row{flex-direction:column;gap:6px}
+  .lbl{padding-top:0}
+  .lesson{grid-template-columns:54px 1fr}
+  .num b{font-size:1.5rem}
+  .res{grid-template-columns:1fr;gap:4px}
+  .clock{text-align:left}
+  .tab{min-width:78px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}#rain{display:none}}
